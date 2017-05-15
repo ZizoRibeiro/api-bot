@@ -12,7 +12,7 @@ end
 configure :development do
   set :database, {
     adapter: 'postgresql',
-    encoding: 'uft8',
+    encoding: 'utf8',
     database: 'api_bot_development',
     pool: 5,
     username: 'postgres',

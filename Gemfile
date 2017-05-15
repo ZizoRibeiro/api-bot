@@ -11,5 +11,6 @@ end
 
 group :text do
   gem "rack-test", require: "rack/test"
+
   gem "rspec"
 end
