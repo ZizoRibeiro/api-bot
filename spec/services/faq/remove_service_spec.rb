@@ -8,10 +8,10 @@ describe FaqModule::RemoveService do
   describe '#call' do
     it 'call with valid ID, remove Faq' do
       faq = create(:faq, company: @company)
-      @RemoveService = FaqModule::RemoveService.new({'id' => faq.id})
+      @removeService = FaqModule::RemoveService.new({'id' => faq.id})
       response = @removeService.call()
 
-      expect(response).to eq('it has been deleted successfully')
+      expect(response).to eq('It has been deleted successfully')
     end
 
     it 'call with valid ID, remove Faq from the database' do
@@ -27,7 +27,7 @@ describe FaqModule::RemoveService do
       @removeService = FaqModule::RemoveService.new({'id' => rand(1..9999)})
       response = @removeService.call()
 
-      expect(response).to eq('invalid question, please verify the ID')
+      expect(response).to eq('Invalid question, please verify the ID')
     end
   end
 
