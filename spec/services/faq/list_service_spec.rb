@@ -10,7 +10,7 @@ describe FaqModule::ListService do
       @listService = FaqModule::ListService.new({}, 'list')
 
       response = @listService.call()
-      expect(response).to eq('message not found!')
+      expect(response).to eq('search not found')
     end
 
     it 'list command call with two faqs, find questions and answers in response' do
@@ -29,10 +29,10 @@ describe FaqModule::ListService do
     end
 
     it 'call with search command: query empty, return I cant find the message' do
-      @listService = FaqModule::listService.new({'query' => ''}, 'search')
+      @listService = FaqModule::ListService.new({'query' => ''}, 'search')
 
       response = @listService.call()
-      expect(response).to eq('not found')
+      expect(response).to eq('search not found')
     end
 
     it 'call with search command: valid query, find question and answer in response' do
@@ -66,4 +66,4 @@ describe FaqModule::ListService do
       expect(response).to eq(faq.answer)
     end
   end
-end  
+end
