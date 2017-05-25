@@ -10,7 +10,7 @@ module FaqModule
     def call
       Faq.transaction do
         faq = Faq.create(question: @question, answer: @answer, company: @company)
-        return 'It must have Hashtag' if @hashtags == nil
+        return 'It must have a Hashtag' if @hashtags == nil
         @hashtags.split(/[\s,]+/).each do |hashtag|
           faq.hashtags << Hashtag.create(name: hashtag)
         end
