@@ -6,7 +6,6 @@ gem 'pg'
 gem 'rake'
 gem 'pg_search'
 
-
 group :development, :test do
   gem 'tux'
   gem "ffaker"

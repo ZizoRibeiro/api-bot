@@ -21,18 +21,18 @@ describe FaqModule::ListService do
 
       response = @listService.call()
 
-      expect(response).to eq(faq1.question)
-      expect(response).to eq(faq1.answer)
+      expect(response).to match(faq1.question)
+      expect(response).to match(faq1.answer)
 
-      expect(response).to eq(faq2.question)
-      expect(response).to eq(faq2.answer)
+      expect(response).to match(faq2.question)
+      expect(response).to match(faq2.answer)
     end
 
     it 'call with search command: query empty, return I cant find the message' do
       @listService = FaqModule::ListService.new({'query' => ''}, 'search')
 
       response = @listService.call()
-      expect(response).to eq('search not found')
+      expect(response).to match('search not found')
     end
 
     it 'call with search command: valid query, find question and answer in response' do
@@ -42,8 +42,8 @@ describe FaqModule::ListService do
 
       response = @listService.call()
 
-      expect(response).to eq(faq.question)
-      expect(response).to eq(faq.answer)
+      expect(response).to match(faq.question)
+      expect(response).to match(faq.answer)
     end
 
     it 'call with search_by_hashtag command: invalid hashtag, return I dont find the message' do
@@ -58,12 +58,12 @@ describe FaqModule::ListService do
       hashtag = create(:hashtag, company: @company)
       create(:faq_hashtag, faq: faq, hashtag: hashtag)
 
-      @listService = FaqModule::ListService.new('query' => hashtag.name), 'search_by_hashtag'
+      @listService = FaqModule::ListService.new({'query' => hashtag.name}, 'search_by_hashtag')
 
       response = @listService.call()
 
-      expect(response).to eq(faq.question)
-      expect(response).to eq(faq.answer)
+      expect(response).to match(faq.question)
+      expect(response).to match(faq.answer)
     end
   end
 end
