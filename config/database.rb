@@ -21,7 +21,7 @@ configure :development do
 end
 
 configure :production do
-  db = 'postgres:///postgres/api_bot_production')
+  db = 'postgres:///postgres/api_bot_production'
 
   set :database, {
     adapter:  db.scheme == 'postgres' ? 'postgresql' : db.scheme,
