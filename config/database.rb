@@ -24,7 +24,7 @@ configure :production do
   db = URI.parse(ENV['DATABASE_URL'] || 'postgres:///postgres/api_bot_development')
 
   set :database, {
-    adapter:  db.scheme == 'postgres' ? 'postgresql' : db.scheme,
+    adapter:  db.scheme == 'postgresql' ? 'postgresql' : db.scheme,
     host:     db.host,
     username: db.user,
     password: db.password,
